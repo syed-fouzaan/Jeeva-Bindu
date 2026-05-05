@@ -29,7 +29,7 @@ export default function RequestBlood() {
           </div>
         </div>
 
-        <div className="glass" style={{ padding: '2.5rem' }}>
+        <div className="glass glass-hover" style={{ padding: '2.5rem' }}>
           <form onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="input-group">

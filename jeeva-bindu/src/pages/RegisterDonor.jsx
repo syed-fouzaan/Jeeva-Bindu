@@ -8,7 +8,7 @@ export default function RegisterDonor() {
 
   return (
     <div className="container animate-fade-in" style={{ padding: '4rem 0' }}>
-      <div className="glass" style={{ maxWidth: '800px', margin: '0 auto', padding: '3rem' }}>
+      <div className="glass glass-hover" style={{ maxWidth: '800px', margin: '0 auto', padding: '3rem' }}>
         <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
           <Heart size={48} color="hsl(var(--primary))" style={{ margin: '0 auto 1rem' }} />
           <h1 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>Become a Donor</h1>

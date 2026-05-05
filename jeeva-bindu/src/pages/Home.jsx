@@ -35,7 +35,7 @@ export default function Home() {
             { icon: Activity, title: "24/7", desc: "Emergency Support" },
             { icon: ShieldPlus, title: "100%", desc: "Verified Donors" }
           ].map((stat, i) => (
-            <div key={i} className="glass" style={{ padding: '2rem', textAlign: 'center' }}>
+            <div key={i} className="glass glass-hover" style={{ padding: '2rem', textAlign: 'center' }}>
               <stat.icon size={48} color="hsl(var(--primary))" style={{ margin: '0 auto 1rem' }} />
               <h3 style={{ fontSize: '1.8rem', marginBottom: '0.5rem' }}>{stat.title}</h3>
               <p style={{ color: 'hsl(var(--text-muted))' }}>{stat.desc}</p>
@@ -49,17 +49,17 @@ export default function Home() {
         <div className="container">
           <h2 style={{ fontSize: '2.5rem', textAlign: 'center', marginBottom: '3rem' }}>How It Works</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div className="glass" style={{ padding: '2rem' }}>
+            <div className="glass glass-hover" style={{ padding: '2rem' }}>
               <div style={{ width: '60px', height: '60px', borderRadius: '50%', background: 'hsl(var(--primary))', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.5rem', fontWeight: 'bold', margin: '0 auto 1.5rem' }}>1</div>
               <h3 style={{ marginBottom: '1rem' }}>Register</h3>
               <p style={{ color: 'hsl(var(--text-muted))' }}>Create an account and provide your blood group and location details.</p>
             </div>
-            <div className="glass" style={{ padding: '2rem' }}>
+            <div className="glass glass-hover" style={{ padding: '2rem' }}>
               <div style={{ width: '60px', height: '60px', borderRadius: '50%', background: 'hsl(var(--primary))', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.5rem', fontWeight: 'bold', margin: '0 auto 1.5rem' }}>2</div>
               <h3 style={{ marginBottom: '1rem' }}>Get Notified</h3>
               <p style={{ color: 'hsl(var(--text-muted))' }}>Receive alerts when someone in your area urgently needs your blood group.</p>
             </div>
-            <div className="glass" style={{ padding: '2rem' }}>
+            <div className="glass glass-hover" style={{ padding: '2rem' }}>
               <div style={{ width: '60px', height: '60px', borderRadius: '50%', background: 'hsl(var(--primary))', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.5rem', fontWeight: 'bold', margin: '0 auto 1.5rem' }}>3</div>
               <h3 style={{ marginBottom: '1rem' }}>Save a Life</h3>
               <p style={{ color: 'hsl(var(--text-muted))' }}>Donate blood to the recipient and become a real-life hero.</p>

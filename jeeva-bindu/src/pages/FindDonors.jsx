@@ -1,14 +1,37 @@
 import { useState } from 'react';
 import { Search, MapPin, Droplet } from 'lucide-react';
 
-const MOCK_DONORS = [
-  { id: 1, name: 'Rahul Sharma', bloodGroup: 'O+', location: 'Mumbai', lastDonated: '2023-10-15' },
-  { id: 2, name: 'Priya Patel', bloodGroup: 'A-', location: 'Delhi', lastDonated: '2024-01-20' },
-  { id: 3, name: 'Vikram Singh', bloodGroup: 'B+', location: 'Bangalore', lastDonated: '2023-11-05' },
-  { id: 4, name: 'Ananya Gupta', bloodGroup: 'AB+', location: 'Mumbai', lastDonated: '2024-02-10' },
-  { id: 5, name: 'Arjun Kumar', bloodGroup: 'O-', location: 'Chennai', lastDonated: '2023-09-22' },
-  { id: 6, name: 'Neha Reddy', bloodGroup: 'B-', location: 'Bangalore', lastDonated: '2024-03-01' },
-];
+const FIRST_NAMES = ['Rahul', 'Priya', 'Vikram', 'Ananya', 'Arjun', 'Neha', 'Rohan', 'Sneha', 'Aditya', 'Kavya', 'Karan', 'Pooja', 'Amit', 'Riya', 'Siddharth', 'Aisha', 'Ravi', 'Swati', 'Vishal', 'Nisha'];
+const LAST_NAMES = ['Sharma', 'Patel', 'Singh', 'Gupta', 'Kumar', 'Reddy', 'Mehta', 'Joshi', 'Das', 'Verma', 'Chauhan', 'Nair', 'Iyer', 'Bose', 'Yadav', 'Pandey', 'Mishra', 'Desai', 'Shah', 'Malhotra'];
+const CITIES = ['Mumbai', 'Delhi', 'Bangalore', 'Chennai', 'Kolkata', 'Hyderabad', 'Pune', 'Ahmedabad', 'Jaipur', 'Surat'];
+const BLOOD_GROUPS = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'];
+
+const generateMockDonors = () => {
+  const donors = [];
+  let id = 1;
+  BLOOD_GROUPS.forEach(bg => {
+    for (let i = 0; i < 10; i++) {
+      const firstName = FIRST_NAMES[Math.floor(Math.random() * FIRST_NAMES.length)];
+      const lastName = LAST_NAMES[Math.floor(Math.random() * LAST_NAMES.length)];
+      const city = CITIES[Math.floor(Math.random() * CITIES.length)];
+      const year = 2023 + Math.floor(Math.random() * 2);
+      const month = String(Math.floor(Math.random() * 12) + 1).padStart(2, '0');
+      const day = String(Math.floor(Math.random() * 28) + 1).padStart(2, '0');
+      
+      donors.push({
+        id: id++,
+        name: `${firstName} ${lastName}`,
+        bloodGroup: bg,
+        location: city,
+        lastDonated: `${year}-${month}-${day}`
+      });
+    }
+  });
+  // Shuffle the array for a natural list view
+  return donors.sort(() => Math.random() - 0.5);
+};
+
+const MOCK_DONORS = generateMockDonors();
 
 export default function FindDonors() {
   const [bloodGroup, setBloodGroup] = useState('');
@@ -76,7 +99,7 @@ export default function FindDonors() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {filteredDonors.map(donor => (
-          <div key={donor.id} className="glass" style={{ padding: '1.5rem' }}>
+          <div key={donor.id} className="glass glass-hover" style={{ padding: '1.5rem' }}>
             <div className="flex justify-between items-start" style={{ marginBottom: '1.5rem' }}>
               <div>
                 <h3 style={{ fontSize: '1.3rem', marginBottom: '0.25rem' }}>{donor.name}</h3>
@@ -94,7 +117,13 @@ export default function FindDonors() {
               Last Donated: {donor.lastDonated}
             </p>
             
-            <button className="btn btn-outline" style={{ width: '100%' }}>Contact Donor</button>
+            <button 
+              className="btn btn-outline hover-glow" 
+              style={{ width: '100%' }}
+              onClick={() => alert(`Contacting ${donor.name}...\nAn SMS and Email notification has been sent.`)}
+            >
+              Contact Donor
+            </button>
           </div>
         ))}
         {filteredDonors.length === 0 && (
